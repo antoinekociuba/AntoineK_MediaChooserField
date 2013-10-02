@@ -1,8 +1,6 @@
 AntoineK_MediaChooserField
 ==========================
 
-A new Varien form element to browse and pick up images from the built-in Magento Media Browser.
-
 
 The Media Chooser form element is an alternative to the default Image form element. It relies on the native ```Mediabrowser``` JS implementation and offers much more ease to upload, delete, organise and select your images across the media folder.
 
