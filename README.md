@@ -35,7 +35,7 @@ To do so, you just need to add ```<update handle="editor" />``` inside your admi
 </adminhtml_yourmodulename_yourcontrollername_edit>
 ```
 
-The editor handle automatically include necessary JS/CSS files such as flexuploader.js, browser.js etc...
+The editor handle automatically includes necessary JS/CSS files such as flexuploader.js, browser.js etc...
 You can check what it does exactly on the ```app/design/adminhtml/default/default/layout/main.xml``` file, around the line 168.
 
 
