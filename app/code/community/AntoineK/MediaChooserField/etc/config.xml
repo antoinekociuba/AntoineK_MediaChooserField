@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    AntoineK
+ * @package     AntoineK_MediaChooserField
+ * @copyright   Copyright (c) 2013 Antoine Kociuba (http://www.antoinekociuba.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author      Antoine Kociuba
+ */
+-->
+<config>
+    <modules>
+        <AntoineK_MediaChooserField>
+            <version>1.0.0.0</version>
+        </AntoineK_MediaChooserField>
+    </modules>
+    <global>
+        <models>
+            <mediachooserfield>
+                <class>AntoineK_MediaChooserField_Model</class>
+            </mediachooserfield>
+        </models>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <mediachooserfield>
+                        <type>singleton</type>
+                        <class>mediachooserfield/observer</class>
+                        <method>updateEditorHandle</method>
+                    </mediachooserfield>
+                </observers>
+            </controller_action_layout_load_before>	
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <mediachooserfield before="Mage_Adminhtml">AntoineK_MediaChooserField_Adminhtml</mediachooserfield>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <mediachooserfield>
+                    <file>antoinek/mediachooserfield.xml</file>
+                </mediachooserfield>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
