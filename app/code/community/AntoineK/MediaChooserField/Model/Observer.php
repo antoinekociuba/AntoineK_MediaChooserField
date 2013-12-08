@@ -14,7 +14,7 @@ class AntoineK_MediaChooserField_Model_Observer {
      *
      * @return AntoineK_MediaChooserField_Model_Observer
      */
-    public function updateEditorHandle($observer) {
+    public function updateEditorHandle(Varien_Event_Observer $observer) {
         // Check if we are currently in Admin, System -> Configuration area
         if (Mage::app()->getStore()->isAdmin() 
             && Mage::app()->getRequest()->getControllerName() == "system_config" 
@@ -25,12 +25,12 @@ class AntoineK_MediaChooserField_Model_Observer {
             $xml = $config->getNode();
 
             // Grab all 'frontend_type' fields from the generated xml config 
-            $fieldTypes = $xml->xpath("//sections/*/groups/*/fields/*/frontend_type");
+            $fieldTypes = $xml->xpath("//sections/*/groups/*/fields/*/frontend_model");
 
             if (count($fieldTypes)) {
                 foreach ($fieldTypes as $node) {
                     // If at least one 'frontend_type' is 'mediachooser'
-                    if ($node->asArray() == "mediachooser") {
+                    if ($node->asArray() == "mediachooserfield/adminhtml_system_config_mediachooser") {
                         $layout = $observer->getEvent()->getLayout();
                         // Add the 'editor' handle to the layout to automatically include media browser JS files
                         $layout->getUpdate()->addHandle('editor');

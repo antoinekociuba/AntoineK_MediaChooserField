@@ -5,10 +5,11 @@ AntoineK_MediaChooserField
 The Media Chooser form element is an alternative to the default Image form element. It relies on the native ```Mediabrowser``` JS implementation and offers much more ease to upload, delete, organise and select your images across the media folder.
 
 It is ready to be used on the 'System -> Configuration' admin area.
-Just declare your frontend_type as below, on your system.xml file:
+Just declare your frontend_type and frontend_model as below, on your system.xml file:
 
 ```
-<frontend_type>mediachooser</frontend_type>
+<frontend_type>text</frontend_type>
+<frontend_model>mediachooserfield/adminhtml_system_config_mediachooser</frontend_model>
 ```
 
 For example:
@@ -16,7 +17,8 @@ For example:
 ```
 <test_field>
     <label>Test field</label>
-    <frontend_type>mediachooser</frontend_type>
+    <frontend_type>text</frontend_type>
+    <frontend_model>mediachooserfield/adminhtml_system_config_mediachooser</frontend_model>
     <sort_order>10</sort_order>
     <show_in_default>1</show_in_default>
     <show_in_website>1</show_in_website>
@@ -25,9 +27,25 @@ For example:
 ```
 
 You can also use that form element directly from your custom module admin area.
-However, you will have to include manually necessary JS/CSS files.
+However, you will need to declare that new form element on your module form class, in the ```_prepareForm``` method like:
 
-To do so, you just need to add ```<update handle="editor" />``` inside your admin layout xml file, for example:
+```
+$fieldset = $form->addFieldset('my_fieldset', array('legend'=> $this->__('Mi Fieldset')));
+
+$fieldset->addType('mediachooser','AntoineK_MediaChooserField_Data_Form_Element_Mediachooser');
+
+$fieldset->addField('my_media_chooser_field', 'mediachooser', array(
+    'name'      => 'my_media_chooser_field',
+    'label'     => $this->__('My Media Chooser Field'),
+    'title'     => $this->__('My Media Chooser Field'),
+));
+```
+
+The line ```$fieldset->addType('mediachooser','AntoineK_MediaChooserField_Data_Form_Element_Mediachooser');``` adds a new form element type.
+You can then simply use the media chooser form element by entering the ```mediachooser``` type.
+
+You will also need to include manually necessary JS/CSS files.
+To do so, just add ```<update handle="editor" />``` inside your admin layout xml file, for example:
 
 ```
 <adminhtml_yourmodulename_yourcontrollername_edit>
@@ -36,11 +54,10 @@ To do so, you just need to add ```<update handle="editor" />``` inside your admi
 ```
 
 The editor handle automatically includes necessary JS/CSS files such as flexuploader.js, browser.js etc...
-You can check what it does exactly on the ```app/design/adminhtml/default/default/layout/main.xml``` file, around the line 168.
-
+You can check what it does exactly on the ```app/design/adminhtml/default/default/layout/main.xml``` file, around the line 168 (Magento 1.7.0.2).
 
 
 When you select an image from the media browser, the value returned is formated like ```wysiwyg/yourfilename.yourfileextension```.
 So when you will reuse that value on the frontend, you would need to prefix it with ```Mage::getBaseUrl('media')``` in order to get a working and conventional URL.
 
-Enjoy!
+Enjoy! ;-)

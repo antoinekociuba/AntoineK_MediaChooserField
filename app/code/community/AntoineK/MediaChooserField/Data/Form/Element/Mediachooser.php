@@ -7,7 +7,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @author      Antoine Kociuba
  */
-class Varien_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Text {
+class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Text {
 
     public function __construct($attributes = array()) {
         parent::__construct($attributes);
@@ -24,7 +24,7 @@ class Varien_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Tex
      * @return string
      */
     protected function _getButtonsHtml() {
-        $buttonsHtml = '<div id="buttons' . $this->getHtmlId() . '" class="buttons-set">';
+        $buttonsHtml = '<div id="buttons_' . $this->getHtmlId() . '" class="buttons-set">';
         $buttonsHtml .= $this->_getPluginButtonsHtml(true);
         $buttonsHtml .= '</div>';
 
@@ -44,7 +44,7 @@ class Varien_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Tex
             'title' => $this->translate('Select an image'),
             'onclick' => "MediabrowserUtility.openDialog('" . 
                 Mage::getUrl('adminhtml/cms_wysiwyg_images_chooser/index', array(
-                    'target_element_id' => $this->getId()
+                    'target_element_id' => $this->getHtmlId()
                 )) . ((null !== $this->getConfig('store_id')) ? ('store/' . $this->getConfig('store_id') . '/') : '') . "')",
             'class' => 'add-image',
             'style'     => $visible ? 'margin-top:8px;' : 'display:none;'
@@ -59,11 +59,10 @@ class Varien_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Tex
         
         if ((bool)$fieldValue && !empty($fieldValue)) {
             $mediaUrl = Mage::getBaseUrl('media');
-            $url = $mediaUrl . $fieldValue;
 
             $buttonsHtml .= $this->_getButtonHtml(array(
                 'title' => $this->translate('Open in fullscreen'),
-                'onclick' => 'window.open(\'' . $url . '\')',
+                'onclick' => 'window.open(\''.$mediaUrl.'\'+document.getElementById(\''.$this->getHtmlId().'\').value)',
                 'class' => 'show-hide',
                 'style'     => $visible ? 'margin-top:8px;' : 'display:none;'
             ));

@@ -20,6 +20,11 @@
                 <class>AntoineK_MediaChooserField_Model</class>
             </mediachooserfield>
         </models>
+        <blocks>
+            <mediachooserfield>
+                <class>AntoineK_MediaChooserField_Block</class>
+            </mediachooserfield>
+        </blocks>
         <events>
             <controller_action_layout_load_before>
                 <observers>
