@@ -1,3 +1,3 @@
-app/code/community/AntoineK/*							app/code/community/AntoineK
-app/design/adminhtml/default/default/layout/antoinek/mediachooserfield.xml	app/design/adminhtml/default/default/layout/antoinek/mediachooserfield.xml
-app/etc/modules/AntoineK_MediaChooserField.xml					app/etc/modules/AntoineK_MediaChooserField.xml
+app/code/community/AntoineK/*                                                   app/code/community/AntoineK
+app/design/adminhtml/default/default/layout/antoinek/mediachooserfield.xml      app/design/adminhtml/default/default/layout/antoinek/mediachooserfield.xml
+app/etc/modules/AntoineK_MediaChooserField.xml                                  app/etc/modules/AntoineK_MediaChooserField.xml
