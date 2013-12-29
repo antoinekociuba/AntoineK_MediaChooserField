@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @category    AntoineK
  * @package     AntoineK_MediaChooserField
@@ -7,13 +6,15 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @author      Antoine Kociuba
  */
-class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Text {
-
-    public function __construct($attributes = array()) {
+class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_Data_Form_Element_Text
+{
+    public function __construct($attributes = array())
+    {
         parent::__construct($attributes);
     }
 
-    public function getElementHtml() {
+    public function getElementHtml()
+    {
 
         return parent::getElementHtml() . $this->_getButtonsHtml();
     }
@@ -23,7 +24,8 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
      *
      * @return string
      */
-    protected function _getButtonsHtml() {
+    protected function _getButtonsHtml()
+    {
         $buttonsHtml = '<div id="buttons_' . $this->getHtmlId() . '" class="buttons-set">';
         $buttonsHtml .= $this->_getPluginButtonsHtml(true);
         $buttonsHtml .= '</div>';
@@ -37,8 +39,8 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
      * @param bool $visible Display buttons or not
      * @return string
      */
-    protected function _getPluginButtonsHtml($visible = true) {
-
+    protected function _getPluginButtonsHtml($visible = true)
+    {
         $buttonsHtml = '';
         $buttonsHtml .= $this->_getButtonHtml(array(
             'title' => $this->translate('Select an image'),
@@ -50,8 +52,6 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
             'style'     => $visible ? 'margin-top:8px;' : 'display:none;'
         ));
 
-
-        
         $fieldValue = $this->getValue();
         if(is_object($fieldValue)){
             $fieldValue = $fieldValue->asArray();
@@ -77,7 +77,8 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
      * @param array $data Button params
      * @return string
      */
-    protected function _getButtonHtml($data) {
+    protected function _getButtonHtml($data)
+    {
         $html = '';
         if ($data['class'] != 'add-variable plugin') {
             $html .= '<button type="button"';
@@ -98,7 +99,8 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
      * @param string $key Config var key
      * @return mixed
      */
-    public function getConfig($key = null) {
+    public function getConfig($key = null)
+    {
         if (!($this->_getData('config') instanceof Varien_Object)) {
             $config = new Varien_Object();
             $this->setConfig($config);
@@ -115,7 +117,8 @@ class AntoineK_MediaChooserField_Data_Form_Element_Mediachooser extends Varien_D
      * @param string $string String to be translated
      * @return string
      */
-    public function translate($string) {
+    public function translate($string)
+    {
         if ($this->getConfig('translator') instanceof Varien_Object) {
             return $this->getConfig('translator')->__($string);
         }

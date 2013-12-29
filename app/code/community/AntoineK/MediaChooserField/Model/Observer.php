@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @category    AntoineK
  * @package     AntoineK_MediaChooserField
@@ -7,14 +6,17 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @author      Antoine Kociuba
  */
-class AntoineK_MediaChooserField_Model_Observer {
+class AntoineK_MediaChooserField_Model_Observer
+{
 
     /**
      * Add the 'editor' handle if 'mediachooser' field is being used
      *
+     * @param Varien_Event_Observer $observer
      * @return AntoineK_MediaChooserField_Model_Observer
      */
-    public function updateEditorHandle(Varien_Event_Observer $observer) {
+    public function updateEditorHandle(Varien_Event_Observer $observer)
+    {
         // Check if we are currently in Admin, System -> Configuration area
         if (Mage::app()->getStore()->isAdmin() 
             && Mage::app()->getRequest()->getControllerName() == "system_config" 

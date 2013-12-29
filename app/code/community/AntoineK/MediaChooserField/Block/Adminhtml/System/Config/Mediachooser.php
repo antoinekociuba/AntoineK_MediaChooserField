@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @category    AntoineK
  * @package     AntoineK_MediaChooserField
@@ -7,7 +6,8 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @author      Antoine Kociuba
  */
-class AntoineK_MediaChooserField_Block_Adminhtml_System_Config_Mediachooser extends Mage_Adminhtml_Block_System_Config_Form_Field {
+class AntoineK_MediaChooserField_Block_Adminhtml_System_Config_Mediachooser extends Mage_Adminhtml_Block_System_Config_Form_Field
+{
 
     /**
      * Generates media chooser field with links to media gallery and fullscreen view
@@ -15,8 +15,8 @@ class AntoineK_MediaChooserField_Block_Adminhtml_System_Config_Mediachooser exte
      * @param Varien_Data_Form_Element_Abstract
      * @return string
      */
-    protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element) {
-
+    protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)
+    {
         $field = new AntoineK_MediaChooserField_Data_Form_Element_Mediachooser;
 
         $data = array(

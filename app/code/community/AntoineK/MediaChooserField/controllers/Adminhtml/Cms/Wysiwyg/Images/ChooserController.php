@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @category    AntoineK
  * @package     AntoineK_MediaChooserField
@@ -9,14 +8,16 @@
  */
 require_once 'Mage/Adminhtml/controllers/Cms/Wysiwyg/ImagesController.php';
 
-class AntoineK_MediaChooserField_Adminhtml_Cms_Wysiwyg_Images_ChooserController extends Mage_Adminhtml_Cms_Wysiwyg_ImagesController {
+class AntoineK_MediaChooserField_Adminhtml_Cms_Wysiwyg_Images_ChooserController extends Mage_Adminhtml_Cms_Wysiwyg_ImagesController
+{
 
     /**
      * Fire when select image.
      *
      * @return void
      */
-    public function onInsertAction() {
+    public function onInsertAction()
+    {
         $helper = Mage::helper('cms/wysiwyg_images');
         $storeId = $this->getRequest()->getParam('store');
 
