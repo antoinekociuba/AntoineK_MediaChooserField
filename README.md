@@ -77,7 +77,7 @@ For example:
 </test_field>
 ```
 
-## Use the saved value on the frontend
+## How-To use on the frontend
 
 When you select an image from the media browser, the value returned is formated like ```wysiwyg/yourfilename.yourfileextension```.
 So when you will reuse that value on the frontend, you would need to prefix it with ```Mage::getBaseUrl('media')``` in order to get a working and conventional URL.
