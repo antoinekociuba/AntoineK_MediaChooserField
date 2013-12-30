@@ -41,6 +41,32 @@ class AntoineK_MediaChooserField_Model_Observer
                 }
             }
         }
+
+        // Check if we are currently in CMS, Widget -> Edit area
+        if (Mage::app()->getStore()->isAdmin()
+            && Mage::app()->getRequest()->getControllerName() == "widget_instance"
+            && Mage::app()->getRequest()->getRouteName() == "adminhtml"
+            && Mage::app()->getRequest()->getActionName() == "edit") {
+
+            // Load widget.xml files from all enabled modules
+            $config = Mage::getConfig()->loadModulesConfiguration('widget.xml');
+            $xml = $config->getNode();
+
+            // Grab all 'type' fields from the generated xml config
+            $fieldTypes = $xml->xpath("//*/parameters/*/type");
+
+            if (count($fieldTypes)) {
+                foreach ($fieldTypes as $node) {
+                    // If at least one 'type' is 'mediachooser'
+                    if ($node->asArray() == "mediachooserfield/adminhtml_widget_mediachooser") {
+                        $layout = $observer->getEvent()->getLayout();
+                        // Add the 'editor' handle to the layout to automatically include media browser JS files
+                        $layout->getUpdate()->addHandle('editor');
+                        break;
+                    }
+                }
+            }
+        }
         return $this;
     }
 
