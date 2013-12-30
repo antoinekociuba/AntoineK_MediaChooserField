@@ -4,6 +4,8 @@ AntoineK_MediaChooserField
 
 The Media Chooser form element is an alternative to the default Image form element. It relies on the native ```Mediabrowser``` JS implementation and offers much more ease to upload, delete, organise and select your images across the media folder.
 
+## System/Config form field
+
 It is ready to be used on the 'System -> Configuration' admin area.
 Just declare your frontend_type and frontend_model as below, on your system.xml file:
 
@@ -25,6 +27,8 @@ For example:
     <show_in_store>1</show_in_store>
 </test_field>
 ```
+
+## Custom admin module form field
 
 You can also use that form element directly from your custom module admin area.
 However, you will need to declare that new form element on your module form class, in the ```_prepareForm``` method like:
@@ -56,6 +60,24 @@ To do so, just add ```<update handle="editor" />``` inside your admin layout xml
 The editor handle automatically includes necessary JS/CSS files such as flexuploader.js, browser.js etc...
 You can check what it does exactly on the ```app/design/adminhtml/default/default/layout/main.xml``` file, around the line 168 (Magento 1.7.0.2).
 
+## Widget form field
+
+Like the System/Config method, just declare your widget type as below, on your widget.xml file:
+
+```
+<type>mediachooserfield/adminhtml_widget_mediachooser</type>
+```
+
+For example:
+
+```
+<test_field>
+    <label>Test field</label>
+    <type>mediachooserfield/adminhtml_widget_mediachooser</type>
+</test_field>
+```
+
+## Use the saved value on the frontend
 
 When you select an image from the media browser, the value returned is formated like ```wysiwyg/yourfilename.yourfileextension```.
 So when you will reuse that value on the frontend, you would need to prefix it with ```Mage::getBaseUrl('media')``` in order to get a working and conventional URL.

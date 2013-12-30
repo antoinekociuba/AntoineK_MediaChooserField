@@ -25,17 +25,11 @@
                 <class>AntoineK_MediaChooserField_Block</class>
             </mediachooserfield>
         </blocks>
-        <events>
-            <controller_action_layout_load_before>
-                <observers>
-                    <mediachooserfield>
-                        <type>singleton</type>
-                        <class>mediachooserfield/observer</class>
-                        <method>updateEditorHandle</method>
-                    </mediachooserfield>
-                </observers>
-            </controller_action_layout_load_before>	
-        </events>
+        <helpers>
+            <mediachooserfield>
+                <class>AntoineK_MediaChooserField_Helper</class>
+            </mediachooserfield>
+        </helpers>
     </global>
     <admin>
         <routers>
@@ -49,6 +43,17 @@
         </routers>
     </admin>
     <adminhtml>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <mediachooserfield>
+                        <type>singleton</type>
+                        <class>mediachooserfield/observer</class>
+                        <method>updateEditorHandle</method>
+                    </mediachooserfield>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
         <layout>
             <updates>
                 <mediachooserfield>
@@ -56,5 +61,14 @@
                 </mediachooserfield>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <antoinek_mediachooserfield>
+                    <files>
+                        <default>AntoineK_MediaChooserField.csv</default>
+                    </files>
+                </antoinek_mediachooserfield>
+            </modules>
+        </translate>
     </adminhtml>
 </config>
