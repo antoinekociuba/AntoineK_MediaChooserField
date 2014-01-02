@@ -22,19 +22,23 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
 
             $layout = $element->getForm()->getParent()->getLayout();
             $id = $element->getForm()->getHtmlIdPrefix() . $element->getHtmlId();
-            $imagePreview = '';
 
             if ($url = $element->getValue()) {
+                $linkStyle = "display:inline;";
+
                 if(!preg_match("/^http\:\/\/|https\:\/\//", $url)) {
                     $url = Mage::getBaseUrl('media') . $url;
                 }
-
-                $imagePreview = '<a href="' . $url . '" style="text-decoration: none;"'
-                    . ' onclick="imagePreview(\'' . $id . '_image\'); return false;">'
-                    . ' <img src="' . $url . '" id="' . $id . '_image" title="' . $element->getValue() . '"'
-                    . ' alt="' . $element->getValue() . '" height="30" class="small-image-preview v-middle"/>'
-                    . ' </a>';
+            }else{
+                $linkStyle = "display:none;";
+                $url = "#";
             }
+
+            $imagePreview = '<a id="' . $id . '_link" href="' . $url . '" style="text-decoration: none; ' . $linkStyle . '"'
+                . ' onclick="imagePreview(\'' . $id . '_image\'); return false;">'
+                . ' <img src="' . $url . '" id="' . $id . '_image" title="' . $element->getValue() . '"'
+                . ' alt="' . $element->getValue() . '" height="30" class="small-image-preview v-middle"/>'
+                . ' </a>';
 
             $selectButtonId = 'add-image-' . mt_rand();
             $chooserUrl = Mage::getUrl('adminhtml/cms_wysiwyg_images_chooser/index', array('target_element_id' => $id));
@@ -52,19 +56,40 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
                 ->setStyle('display:inline;margin-top:7px');
 
             // Remove Image Button
+            $onclickJs = '
+                document.getElementById(\''. $id .'\').value=\'\';
+                if(document.getElementById(\''. $id .'_image\')){
+                    document.getElementById(\''. $id .'_image\').parentNode.style.display = \'none\';
+                }
+                document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>'.$this->__('Select Image').'</span></span></span>\'
+            ';
+
             $removeButton = $layout->createBlock('adminhtml/widget_button')
                 ->setType('button')
                 ->setClass('delete')
                 ->setLabel($this->__('Remove Image'))
-                ->setOnclick('document.getElementById(\''. $id .'\').value=\'\';'
-                    . ' if(document.getElementById(\''. $id .'_image\'))document.getElementById(\''. $id .'_image\').parentNode.remove();'
-                    . ' document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>'.$this->__('Select Image').'</span></span></span>\'')
+                ->setOnclick($onclickJs)
                 ->setDisabled($element->getReadonly())
                 ->setStyle('margin-top:7px');
 
 
             $wrapperStart = '<div id="buttons_' . $id . '" class="buttons-set" style=" width: 325px;">';
             $wrapperEnd = '</div>';
+
+            $wrapperEnd .= '
+                <script type="text/javascript">
+                    //<![CDATA[
+                        varienGlobalEvents.attachEventHandler(\'mediachooserChange\', function(url){
+                            document.getElementById(\'' . $id . '_image\').src = \'' . Mage::getBaseUrl('media') . '\' + url;
+                            document.getElementById(\'' . $id . '_image\').title = url;
+                            document.getElementById(\'' . $id . '_image\').alt = url;
+                            document.getElementById(\'' . $id . '_link\').href = \'' . Mage::getBaseUrl('media') . '\' + url;
+                            document.getElementById(\'' . $id . '_link\').style.display = \'inline\';
+                            document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>'.$this->__('Change Image').'</span></span></span>\';
+                        });
+                    //]]>
+                </script>
+            ';
 
             // Add our custom HTML after the form element
             $element->setAfterElementHtml($wrapperStart . $imagePreview . $chooseButton->toHtml() . $removeButton->toHtml() . $wrapperEnd);

@@ -49,16 +49,20 @@ The line ```$fieldset->addType('mediachooser','AntoineK_MediaChooserField_Data_F
 You can then simply use the media chooser form element by entering the ```mediachooser``` type.
 
 You will also need to include manually necessary JS/CSS files.
-To do so, just add ```<update handle="editor" />``` inside your admin layout xml file, for example:
+To do so, just add ```<update handle="editor" />``` and ```<update handle="adminhtml_browser_js_overload" />``` inside your admin layout xml file, for example:
 
 ```
 <adminhtml_yourmodulename_yourcontrollername_edit>
       <update handle="editor" />
+      <update handle="adminhtml_browser_js_overload" />
 </adminhtml_yourmodulename_yourcontrollername_edit>
 ```
 
-The editor handle automatically includes necessary JS/CSS files such as flexuploader.js, browser.js etc...
+The ```editor``` handle automatically includes necessary JS/CSS files such as flexuploader.js, browser.js etc...
 You can check what it does exactly on the ```app/design/adminhtml/default/default/layout/main.xml``` file, around the line 168 (Magento 1.7.0.2).
+
+The ```adminhtml_browser_js_overload``` overload the insert method of Mediabrowser (browser.js) to dispatch a custom event.
+This event will be responsible to update the image preview and button label.
 
 ## Widget form field
 

@@ -35,7 +35,8 @@ class AntoineK_MediaChooserField_Model_Observer
                     if ($node->asArray() == "mediachooserfield/adminhtml_system_config_mediachooser") {
                         $layout = $observer->getEvent()->getLayout();
                         // Add the 'editor' handle to the layout to automatically include media browser JS files
-                        $layout->getUpdate()->addHandle('editor');
+                        $layout->getUpdate()->addHandle('editor')
+                            ->addHandle('adminhtml_browser_js_overload');
                         break;
                     }
                 }
@@ -61,7 +62,8 @@ class AntoineK_MediaChooserField_Model_Observer
                     if ($node->asArray() == "mediachooserfield/adminhtml_widget_mediachooser") {
                         $layout = $observer->getEvent()->getLayout();
                         // Add the 'editor' handle to the layout to automatically include media browser JS files
-                        $layout->getUpdate()->addHandle('editor');
+                        $layout->getUpdate()->addHandle('editor')
+                            ->addHandle('adminhtml_browser_js_overload');
                         break;
                     }
                 }
