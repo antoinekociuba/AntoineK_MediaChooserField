@@ -61,7 +61,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
                 if(document.getElementById(\''. $id .'_image\')){
                     document.getElementById(\''. $id .'_image\').parentNode.style.display = \'none\';
                 }
-                document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>'.$this->__('Select Image').'</span></span></span>\'
+                document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>' . addslashes($this->__('Select Image')) . '</span></span></span>\';
             ';
 
             $removeButton = $layout->createBlock('adminhtml/widget_button')
@@ -85,7 +85,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
                             document.getElementById(\'' . $id . '_image\').alt = url;
                             document.getElementById(\'' . $id . '_link\').href = \'' . Mage::getBaseUrl('media') . '\' + url;
                             document.getElementById(\'' . $id . '_link\').style.display = \'inline\';
-                            document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>'.$this->__('Change Image').'</span></span></span>\';
+                            document.getElementById(\''. $selectButtonId .'\').innerHTML=\'<span><span><span>' . addslashes($this->__('Change Image')) . '</span></span></span>\';
                         });
                     //]]>
                 </script>
