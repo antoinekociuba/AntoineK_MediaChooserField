@@ -79,7 +79,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
             $wrapperEnd .= '
                 <script type="text/javascript">
                     //<![CDATA[
-                        varienGlobalEvents.attachEventHandler(\'mediachooserChange\', function(url){
+                        varienGlobalEvents.attachEventHandler(\'mediachooserChange'.$id.'\', function(url){
                             document.getElementById(\'' . $id . '_image\').src = \'' . Mage::getBaseUrl('media') . '\' + url;
                             document.getElementById(\'' . $id . '_image\').title = url;
                             document.getElementById(\'' . $id . '_image\').alt = url;

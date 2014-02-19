@@ -47,7 +47,7 @@ Mediabrowser.prototype.insert = Mediabrowser.prototype.insert.wrap(function(pare
 
                     // AntoineK overload START
                     if (varienGlobalEvents) {
-                        varienGlobalEvents.fireEvent('mediachooserChange', transport.responseText);
+                        varienGlobalEvents.fireEvent('mediachooserChange' + targetEl.id, transport.responseText);
                     }
                     // AntoineK overload END
 
