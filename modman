@@ -2,4 +2,5 @@ app/code/community/AntoineK/*                               app/code/community/A
 app/design/adminhtml/default/default/layout/antoinek/*      app/design/adminhtml/default/default/layout/antoinek
 app/etc/modules/AntoineK_MediaChooserField.xml              app/etc/modules/AntoineK_MediaChooserField.xml
 app/locale/fr_FR/AntoineK_MediaChooserField.csv             app/locale/fr_FR/AntoineK_MediaChooserField.csv
+app/locale/en_US/AntoineK_MediaChooserField.csv             app/locale/en_US/AntoineK_MediaChooserField.csv
 js/antoinek/*                                               js/antoinek
