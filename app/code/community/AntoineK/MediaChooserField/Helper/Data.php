@@ -21,7 +21,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
         if (Mage::getSingleton('admin/session')->isAllowed('cms/media_gallery')) {
 
             $layout = $element->getForm()->getParent()->getLayout();
-            $id = $element->getForm()->getHtmlIdPrefix() . $element->getHtmlId();
+            $id = $element->getHtmlId();
 
             if ($url = $element->getValue()) {
                 $linkStyle = "display:inline;";
@@ -79,6 +79,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
             $wrapperEnd .= '
                 <script type="text/javascript">
                     //<![CDATA[
+                        varienGlobalEvents.clearEventHandlers(\'mediachooserChange'.$id.'\');
                         varienGlobalEvents.attachEventHandler(\'mediachooserChange'.$id.'\', function(url){
                             document.getElementById(\'' . $id . '_image\').src = \'' . Mage::getBaseUrl('media') . '\' + url;
                             document.getElementById(\'' . $id . '_image\').title = url;
