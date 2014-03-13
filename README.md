@@ -7,7 +7,7 @@ The Media Chooser form element is an alternative to the default Image form eleme
 1 - Press the 'Select Image' button.
 
 
-![magento-media-chooser-field-1](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field1.png)
+![magento-media-chooser-field-1](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field11.png)
 
 
 
