@@ -4,6 +4,12 @@ AntoineK_MediaChooserField
 
 The Media Chooser form element is an alternative to the default Image form element. It relies on the native ```Mediabrowser``` JS implementation and offers much more ease to upload, delete, organise and select your images across the media folder.
 
+![magento-media-chooser-field-1](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field-1.png)
+
+![magento-media-chooser-field-2](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field-2.png)
+
+![magento-media-chooser-field-3](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field-3.png)
+
 ## System/Config form field
 
 It is ready to be used on the 'System -> Configuration' admin area.
