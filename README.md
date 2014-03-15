@@ -8,6 +8,7 @@ The Media Chooser form element is an alternative to the default Image form eleme
 
 
 ![magento-media-chooser-field-1](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field111.png)
+-----
 
 
 
@@ -15,12 +16,14 @@ The Media Chooser form element is an alternative to the default Image form eleme
 
 
 ![magento-media-chooser-field-2](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field2.png)
+-----
 
 
 3 - You are done!
 
 
 ![magento-media-chooser-field-3](http://www.antoinekociuba.com/wp-content/uploads/2014/03/magento-media-chooser-field3.png)
+-----
 
 ## System/Config form field
 
