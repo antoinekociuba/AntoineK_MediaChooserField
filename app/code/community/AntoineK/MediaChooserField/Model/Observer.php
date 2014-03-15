@@ -82,10 +82,10 @@ class AntoineK_MediaChooserField_Model_Observer
     {
         $form = $observer->getEvent()->getForm();
 
-        // Replace 'your_product_field' with a form element Id to apply media chooser to it
-        /*$yourProductField = $form->getElement('name');
-        if ($yourProductField) {
-            $yourProductField->setRenderer(
+        // Replace 'your_field' with a form element Id to apply media chooser to it
+        /*$yourField = $form->getElement('your_field');
+        if ($yourField) {
+            $yourField->setRenderer(
                 Mage::app()->getLayout()->createBlock('mediachooserfield/adminhtml_catalog_form_renderer_attribute_mediachooser')
             );
         }*/
