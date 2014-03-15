@@ -22,4 +22,12 @@
             <action method="addJs"><script>antoinek/mage/adminhtml/browser.js</script></action>
         </reference>
     </adminhtml_browser_js_overload>
+
+    <adminhtml_catalog_product_edit>
+        <update handle="adminhtml_browser_js_overload"/>
+    </adminhtml_catalog_product_edit>
+
+    <adminhtml_catalog_category_edit>
+        <update handle="adminhtml_browser_js_overload"/>
+    </adminhtml_catalog_category_edit>
 </layout>

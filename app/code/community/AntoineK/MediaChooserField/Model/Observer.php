@@ -72,4 +72,25 @@ class AntoineK_MediaChooserField_Model_Observer
         return $this;
     }
 
+    /**
+     * Set Media Chooser field renderer on defined category/product form field(s)
+     *
+     * @param Varien_Event_Observer $observer
+     * @return AntoineK_MediaChooserField_Model_Observer
+     */
+    public function setMediaChooserFieldRenderer(Varien_Event_Observer $observer)
+    {
+        $form = $observer->getEvent()->getForm();
+
+        // Replace 'your_product_field' with a form element Id to apply media chooser to it
+        /*$yourProductField = $form->getElement('name');
+        if ($yourProductField) {
+            $yourProductField->setRenderer(
+                Mage::app()->getLayout()->createBlock('mediachooserfield/adminhtml_catalog_form_renderer_attribute_mediachooser')
+            );
+        }*/
+
+        return $this;
+    }
+
 }

@@ -53,6 +53,24 @@
                     </mediachooserfield>
                 </observers>
             </controller_action_layout_load_before>
+            <adminhtml_catalog_product_edit_prepare_form>
+                <observers>
+                    <mediachooserfield>
+                        <type>singleton</type>
+                        <class>mediachooserfield/observer</class>
+                        <method>setMediaChooserFieldRenderer</method>
+                    </mediachooserfield>
+                </observers>
+            </adminhtml_catalog_product_edit_prepare_form>
+            <adminhtml_catalog_category_edit_prepare_form>
+                <observers>
+                    <mediachooserfield>
+                        <type>singleton</type>
+                        <class>mediachooserfield/observer</class>
+                        <method>setMediaChooserFieldRenderer</method>
+                    </mediachooserfield>
+                </observers>
+            </adminhtml_catalog_category_edit_prepare_form>
         </events>
         <layout>
             <updates>
