@@ -99,6 +99,21 @@ For example:
 </test_field>
 ```
 
+## Category/Product form field
+
+Edit Observer.php setMediaChooserFieldRenderer method and define field(s) you want to use with the Media Chooser
+
+For example:
+
+```
+$yourField = $form->getElement('your_field');
+if ($yourField) {
+    $yourField->setRenderer(
+        Mage::app()->getLayout()->createBlock('mediachooserfield/adminhtml_catalog_form_renderer_attribute_mediachooser')
+    );
+}
+```
+
 ## How-To use on the frontend
 
 When you select an image from the media browser, the value returned is formated like ```wysiwyg/yourfilename.yourfileextension```.
