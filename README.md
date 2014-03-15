@@ -101,7 +101,7 @@ For example:
 
 ## Category/Product form field
 
-Edit Observer.php setMediaChooserFieldRenderer method and define field(s) you want to use with the Media Chooser
+Edit Observer.php setMediaChooserFieldRenderer method and define field(s) you want to use with the Media Chooser.
 
 For example:
 
