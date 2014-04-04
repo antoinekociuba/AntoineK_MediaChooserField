@@ -30,6 +30,20 @@
                 <class>AntoineK_MediaChooserField_Helper</class>
             </mediachooserfield>
         </helpers>
+        <!--
+        <mediachooser>
+            <catalog>
+                <product>
+                    <attributes>
+                    </attributes>
+                </product>
+                <category>
+                    <attributes>
+                    </attributes>
+                </category>
+            </catalog>
+        </mediachooser>
+        -->
     </global>
     <admin>
         <routers>
