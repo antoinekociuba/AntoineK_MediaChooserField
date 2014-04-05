@@ -30,6 +30,20 @@
                 <class>AntoineK_MediaChooserField_Helper</class>
             </mediachooserfield>
         </helpers>
+        <!--
+        <mediachooser>
+            <catalog>
+                <product>
+                    <attributes>
+                    </attributes>
+                </product>
+                <category>
+                    <attributes>
+                    </attributes>
+                </category>
+            </catalog>
+        </mediachooser>
+        -->
     </global>
     <admin>
         <routers>
@@ -58,7 +72,7 @@
                     <mediachooserfield>
                         <type>singleton</type>
                         <class>mediachooserfield/observer</class>
-                        <method>setMediaChooserFieldRenderer</method>
+                        <method>setMediaChooserFieldRendererOnProductEditForm</method>
                     </mediachooserfield>
                 </observers>
             </adminhtml_catalog_product_edit_prepare_form>
@@ -67,7 +81,7 @@
                     <mediachooserfield>
                         <type>singleton</type>
                         <class>mediachooserfield/observer</class>
-                        <method>setMediaChooserFieldRenderer</method>
+                        <method>setMediaChooserFieldRendererOnCategoryEditForm</method>
                     </mediachooserfield>
                 </observers>
             </adminhtml_catalog_category_edit_prepare_form>
