@@ -13,6 +13,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
      * Render Media Chooser HTML (buttons and image preview) and set it after the form element HTML
      *
      * @param Varien_Data_Form_Element_Abstract $element
+     *
      * @return Varien_Data_Form_Element_Abstract
      */
     public function render(Varien_Data_Form_Element_Abstract $element)
@@ -20,7 +21,7 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
 
         if (Mage::getSingleton('admin/session')->isAllowed('cms/media_gallery')) {
 
-            $layout = $element->getForm()->getParent()->getLayout();
+            $layout = Mage::app()->getLayout();
             $id = $element->getHtmlId();
 
             if ($url = $element->getValue()) {
@@ -97,5 +98,28 @@ class AntoineK_MediaChooserField_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         return $element;
+    }
+
+    /**
+     * Render Media Chooser HTML without form element as parameter
+     * Can be useful for dynamic fields integration like it is done in Mage_Poll module for example
+     *
+     * @param $id
+     * @param null $value
+     *
+     * @return string
+     */
+    public function renderWithoutFormElement($id, $value = null)
+    {
+        $dummyForm = new Varien_Data_Form();
+        $dummyElement = new Varien_Data_Form_Element_Text();
+
+        $dummyElement->setHtmlId($id);
+        $dummyElement->setValue($value);
+        $dummyElement->setForm($dummyForm);
+
+        $html = $this->render($dummyElement);
+
+        return $html->getAfterElementHtml();
     }
 }
