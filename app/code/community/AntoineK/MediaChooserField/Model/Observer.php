@@ -27,7 +27,9 @@ class AntoineK_MediaChooserField_Model_Observer
      */
     public function updateEditorHandle(Varien_Event_Observer $observer)
     {
-        // Check if we are currently in Admin, System -> Configuration area
+        /**
+         * System -> Configuration area
+         */
         if (Mage::app()->getStore()->isAdmin()
             && Mage::app()->getRequest()->getControllerName() == "system_config"
             && Mage::app()->getRequest()->getRouteName() == "adminhtml") {
@@ -53,7 +55,9 @@ class AntoineK_MediaChooserField_Model_Observer
             }
         }
 
-        // Check if we are currently in CMS, Widget -> Edit area
+        /**
+         * CMS, Widget -> Edit area
+         */
         if (Mage::app()->getStore()->isAdmin()
             && Mage::app()->getRequest()->getControllerName() == "widget_instance"
             && Mage::app()->getRequest()->getRouteName() == "adminhtml"
@@ -79,6 +83,38 @@ class AntoineK_MediaChooserField_Model_Observer
                 }
             }
         }
+
+        /**
+         * CMS, Block -> Edit area
+         *
+         * (Compatibility for AntoineK_Cms module)
+         */
+        if (Mage::app()->getStore()->isAdmin()
+            && Mage::app()->getRequest()->getControllerName() == "cms_block"
+            && Mage::app()->getRequest()->getRouteName() == "adminhtml"
+            && Mage::app()->getRequest()->getActionName() == "edit") {
+
+            // Load config.xml files from all enabled modules
+            $config = Mage::getConfig()->loadModulesConfiguration('config.xml');
+            $xml = $config->getNode();
+
+            // Grab all 'type' fields from the generated xml config
+            $fieldTypes = $xml->xpath("//cms/block/additional_fields/*/fields/*/type");
+
+            if (count($fieldTypes)) {
+                foreach ($fieldTypes as $node) {
+                    // If at least one 'type' is 'mediachooser'
+                    if ($node->asArray() == "mediachooser") {
+                        $layout = $observer->getEvent()->getLayout();
+                        // Add the 'editor' handle to the layout to automatically include media browser JS files
+                        $layout->getUpdate()->addHandle('editor')
+                            ->addHandle('adminhtml_browser_js_overload');
+                        break;
+                    }
+                }
+            }
+        }
+
         return $this;
     }
 
